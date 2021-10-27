@@ -9,7 +9,10 @@ services: # docker 로 감싸서 배포할거에요
 
 before_install: 
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker build -t travis -f Dockerfile ./
+  - docker build -t lgu0521/travis -f Dockerfile ./
+
+script:
+  - docker run -e CI=true lgu0521/travis npm run start -- --coverage
 
 branches: # 해당 브렌치로 push 될 경우에만 반응합니다
   only:
