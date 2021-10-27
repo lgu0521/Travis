@@ -11,15 +11,12 @@ before_install:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker build -t lgu0521/travis -f Dockerfile ./
 
-script:
-  - docker run -p 127.0.0.1:8081 -e CI=true lgu0521/travis npm run start
-
 branches: # 해당 브렌치로 push 될 경우에만 반응합니다
   only:
     - main
 
 notifications: # 변경사항이 있을때 알림을 받을 수 있도록
-  email:
+  email:수정
     on_success: change
     on_failure: always
     recipients:
